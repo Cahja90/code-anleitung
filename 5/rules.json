@@ -1,0 +1,58 @@
+{
+  "book": "The Design of Design",
+  "author": "Frederick P. Brooks Jr.",
+  "year": 2010,
+  "source_folder": "5",
+  "language": "en",
+  "principles": [
+    {
+      "id": "DOD-INTEGRITY-001",
+      "rule": "Prioritize conceptual integrity: every solution follows one clear design concept. Prefer consistency over feature count or cleverness.",
+      "source": "The Design of Design, Ch. 1",
+      "severity": "must",
+      "checks": ["a single guiding concept stated before implementation", "all parts fit that concept"]
+    },
+    {
+      "id": "DOD-ITERATE-002",
+      "rule": "Design iteratively, not waterfall. Build the simplest working version first, then refine; let goals and solution co-evolve.",
+      "source": "The Design of Design, Ch. 3, 5",
+      "severity": "should",
+      "checks": ["no big up-front spec frozen before any build", "incremental refinement"]
+    },
+    {
+      "id": "DOD-EMPIRICAL-003",
+      "rule": "Be empirical: validate assumptions with prototypes and tests rather than trusting correctness-by-reasoning.",
+      "source": "The Design of Design, Ch. 8",
+      "severity": "should",
+      "checks": ["risky assumptions tested early", "prototype before committing"]
+    },
+    {
+      "id": "DOD-ASSUME-004",
+      "rule": "Make user/usage assumptions explicit ('better wrong than vague') so they can be reviewed and corrected.",
+      "source": "The Design of Design, Ch. 9",
+      "severity": "should",
+      "checks": ["assumptions written down explicitly", "stated rather than implied"]
+    },
+    {
+      "id": "DOD-CONSTRAINT-005",
+      "rule": "Treat constraints as friends: use budgets and limits (time, memory, interfaces) to shrink the solution space and focus the design.",
+      "source": "The Design of Design, Ch. 10, 11",
+      "severity": "consider",
+      "checks": ["critical resource explicitly budgeted", "constraints made explicit"]
+    },
+    {
+      "id": "DOD-REQ-006",
+      "rule": "Exercise requirements discipline: actively resist scope creep ('requirements sin'); more requirements rarely means a better product.",
+      "source": "The Design of Design, Ch. 4",
+      "severity": "should",
+      "checks": ["scope creep named explicitly", "requirements challenged, not silently grown"]
+    },
+    {
+      "id": "DOD-BOLD-007",
+      "rule": "Invest care in the few bold, high-leverage design decisions; they account for most of the outcome's quality.",
+      "source": "The Design of Design, Preface, Case Studies",
+      "severity": "consider",
+      "checks": ["key architectural decisions identified and deliberated"]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "book": "Design Patterns",
+  "author": "Gamma, Helm, Johnson, Vlissides (Gang of Four)",
+  "year": 1994,
+  "source_folder": "3",
+  "note": "Source PDF is image-based and not text-extractable; rules derived from the established content of this work.",
+  "language": "en",
+  "principles": [
+    {
+      "id": "GOF-INT-001",
+      "rule": "Program to an interface, not an implementation. Depend on abstract types, not concrete classes.",
+      "source": "Design Patterns, Introduction",
+      "severity": "must",
+      "checks": ["public APIs expressed via interfaces/abstract types", "no construction of concretes in business logic"]
+    },
+    {
+      "id": "GOF-COMP-002",
+      "rule": "Favor object composition over class inheritance. Use inheritance only for true is-a relationships honoring LSP.",
+      "source": "Design Patterns, Introduction",
+      "severity": "should",
+      "checks": ["no deep inheritance hierarchies", "behavior assembled via composition/delegation"]
+    },
+    {
+      "id": "GOF-VARY-003",
+      "rule": "Encapsulate what varies: isolate the parts likely to change behind a stable interface (e.g. Strategy, Factory, Bridge).",
+      "source": "Design Patterns, Introduction",
+      "severity": "should",
+      "checks": ["varying algorithms behind a strategy interface", "no type-switch branching to select behavior"]
+    },
+    {
+      "id": "GOF-NAME-004",
+      "rule": "Use established pattern names as shared vocabulary; name the pattern in code/comments when one is applied intentionally.",
+      "source": "Design Patterns",
+      "severity": "consider",
+      "checks": ["pattern intent is clear from naming"]
+    },
+    {
+      "id": "GOF-NOOVER-005",
+      "rule": "Apply patterns only when the problem genuinely calls for them; avoid speculative pattern-driven overengineering.",
+      "source": "Design Patterns",
+      "severity": "should",
+      "checks": ["pattern introduced to solve a present variability/complexity, not speculatively"]
+    },
+    {
+      "id": "GOF-SINGLETON-006",
+      "rule": "Avoid Singleton/global mutable state for testability; prefer dependency injection of collaborators.",
+      "source": "Design Patterns (Singleton, modern critique)",
+      "severity": "should",
+      "checks": ["dependencies injected, not fetched from globals", "no hidden singletons in core logic"]
+    }
+  ]
+}

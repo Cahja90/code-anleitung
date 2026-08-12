@@ -1,0 +1,65 @@
+{
+  "book": "Refactoring: Improving the Design of Existing Code",
+  "author": "Martin Fowler",
+  "year": 2000,
+  "source_folder": "7",
+  "language": "en",
+  "principles": [
+    {
+      "id": "REF-SMALL-001",
+      "rule": "Refactor in small, behavior-preserving steps; run the tests after each step. Never change behavior and structure at the same time.",
+      "source": "Refactoring, Ch. 2",
+      "severity": "must",
+      "checks": ["each refactoring step keeps tests green", "no functional change inside a refactoring step"]
+    },
+    {
+      "id": "REF-TESTS-002",
+      "rule": "Maintain self-testing code; do not refactor without reliable tests covering the area being changed. Add a test before fixing a bug.",
+      "source": "Refactoring, Ch. 4",
+      "severity": "must",
+      "checks": ["tests exist before refactoring", "bug reproduced by a test first"]
+    },
+    {
+      "id": "REF-TWOHATS-003",
+      "rule": "Wear one hat at a time: separate adding functionality from refactoring (ideally in separate commits).",
+      "source": "Refactoring, Ch. 2",
+      "severity": "should",
+      "checks": ["feature changes and refactors not mixed in one commit"]
+    },
+    {
+      "id": "REF-SMELLS-004",
+      "rule": "Treat code smells as signals to refactor: long functions, duplicated code, long parameter lists, feature envy, primitive obsession, large classes, divergent change, shotgun surgery.",
+      "source": "Refactoring, Ch. 3",
+      "severity": "should",
+      "checks": ["no long methods/large classes left untouched when edited", "smells addressed opportunistically"]
+    },
+    {
+      "id": "REF-EXTRACT-005",
+      "rule": "Prefer Extract Function and good naming to clarify intent rather than adding explanatory comments.",
+      "source": "Refactoring, Ch. 6",
+      "severity": "should",
+      "checks": ["complex blocks extracted into well-named functions", "names reveal intent"]
+    },
+    {
+      "id": "REF-RULEOF3-006",
+      "rule": "Apply the Rule of Three: remove duplication by the third occurrence.",
+      "source": "Refactoring, Ch. 2",
+      "severity": "should",
+      "checks": ["no third copy of the same logic"]
+    },
+    {
+      "id": "REF-PREP-007",
+      "rule": "Use preparatory refactoring: when a change is hard, first refactor to make the change easy, then make it.",
+      "source": "Refactoring, Ch. 2",
+      "severity": "consider",
+      "checks": ["code reshaped to simplify an upcoming change"]
+    },
+    {
+      "id": "REF-GUARD-008",
+      "rule": "Simplify conditionals: use guard clauses, decompose conditionals, and replace type-switch conditionals with polymorphism where appropriate.",
+      "source": "Refactoring, Ch. 10",
+      "severity": "consider",
+      "checks": ["no deep nested conditionals", "behavioral switches considered for polymorphism"]
+    }
+  ]
+}

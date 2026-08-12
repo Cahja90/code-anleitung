@@ -1,0 +1,107 @@
+{
+  "book": "Clean Code",
+  "author": "Robert C. Martin",
+  "year": 2008,
+  "source_folder": "2",
+  "language": "en",
+  "principles": [
+    {
+      "id": "CC-NAME-001",
+      "rule": "Use intention-revealing, pronounceable, searchable names. Names state why something exists and how it is used. No encodings, no noise words, no cute names.",
+      "source": "Clean Code, Ch. 2",
+      "severity": "must",
+      "checks": ["no single-letter names except tiny scopes", "class=noun, method=verb", "one word per concept"]
+    },
+    {
+      "id": "CC-FN-002",
+      "rule": "Keep functions small and do exactly one thing at a single level of abstraction.",
+      "source": "Clean Code, Ch. 3",
+      "severity": "must",
+      "checks": ["prefer well under ~20 lines", "no mixed abstraction levels", "extract until each function does one thing"]
+    },
+    {
+      "id": "CC-FN-003",
+      "rule": "Minimize function arguments (0-2 ideal, avoid 3+). No boolean flag arguments; use argument objects when needed.",
+      "source": "Clean Code, Ch. 3",
+      "severity": "should",
+      "checks": ["no flag parameters", "group related params into objects"]
+    },
+    {
+      "id": "CC-FN-004",
+      "rule": "No side effects; apply Command-Query Separation. A function either does something or answers something, never both.",
+      "source": "Clean Code, Ch. 3",
+      "severity": "should",
+      "checks": ["no hidden state mutation", "queries are pure"]
+    },
+    {
+      "id": "CC-DRY-005",
+      "rule": "Eliminate duplication (DRY). Duplication is the primary enemy of maintainable code.",
+      "source": "Clean Code, Ch. 3, 12",
+      "severity": "must",
+      "checks": ["no copy-paste blocks", "shared logic extracted"]
+    },
+    {
+      "id": "CC-COMMENT-006",
+      "rule": "Express intent in code, not comments. Avoid redundant/commented-out code; delete dead code. Keep only legal, intent, warning, TODO, and API-doc comments.",
+      "source": "Clean Code, Ch. 4",
+      "severity": "should",
+      "checks": ["no commented-out code", "no comment restating the code", "rename/extract instead of explaining"]
+    },
+    {
+      "id": "CC-FORMAT-007",
+      "rule": "Format for readability: related code close together, dependent functions near each other, short lines. Follow team conventions over personal style.",
+      "source": "Clean Code, Ch. 5",
+      "severity": "should",
+      "checks": ["consistent project formatting", "caller above callee"]
+    },
+    {
+      "id": "CC-DEMETER-008",
+      "rule": "Respect the Law of Demeter; avoid train-wreck call chains. Objects hide data and expose behavior; data structures expose data and have no behavior.",
+      "source": "Clean Code, Ch. 6",
+      "severity": "should",
+      "checks": ["no a.getB().getC().doX() chains", "no business logic in DTOs"]
+    },
+    {
+      "id": "CC-ERR-009",
+      "rule": "Prefer exceptions to error codes. Do not return or pass null; use special-case objects or exceptions. Provide context with errors.",
+      "source": "Clean Code, Ch. 7",
+      "severity": "must",
+      "checks": ["no null returns from public APIs", "error handling isolated in its own functions"]
+    },
+    {
+      "id": "CC-BOUND-010",
+      "rule": "Wrap third-party APIs behind your own interfaces/adapters; do not let external types leak through the system. Use learning tests for unfamiliar libraries.",
+      "source": "Clean Code, Ch. 8",
+      "severity": "should",
+      "checks": ["external library types not exposed in core APIs", "adapter layer present"]
+    },
+    {
+      "id": "CC-TEST-011",
+      "rule": "Keep tests clean and treat them as first-class code. Tests are FIRST: Fast, Independent, Repeatable, Self-validating, Timely. One concept per test. Prefer TDD.",
+      "source": "Clean Code, Ch. 9",
+      "severity": "must",
+      "checks": ["tests independent and deterministic", "one logical assertion/concept per test"]
+    },
+    {
+      "id": "CC-CLASS-012",
+      "rule": "Keep classes small with a single responsibility and high cohesion. Organize for change (OCP/DIP) and isolation.",
+      "source": "Clean Code, Ch. 10",
+      "severity": "should",
+      "checks": ["one reason to change", "methods use the class's fields"]
+    },
+    {
+      "id": "CC-SIMPLE-013",
+      "rule": "Follow Kent Beck's rules of simple design in order: (1) passes all tests, (2) no duplication, (3) expresses intent, (4) minimal classes/methods.",
+      "source": "Clean Code, Ch. 12",
+      "severity": "should",
+      "checks": ["design is the simplest that passes tests and expresses intent"]
+    },
+    {
+      "id": "CC-BOYSCOUT-014",
+      "rule": "Apply the Boy Scout Rule: always leave the code cleaner than you found it.",
+      "source": "Clean Code, Ch. 1",
+      "severity": "should",
+      "checks": ["opportunistic small cleanups in touched files"]
+    }
+  ]
+}

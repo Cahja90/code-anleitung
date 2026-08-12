@@ -1,0 +1,285 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Clean Code Framework - Aggregated Coding Standards",
+  "description": "Single source of truth aggregated and de-duplicated from 9 canonical software engineering books. Operating language is English. Principles are actionable directives for the coding agent, grouped by theme. Each rule lists the books that support it.",
+  "version": "1.0.0",
+  "language": "en",
+  "severityLevels": {
+    "must": "Hard rule. Do not violate without explicit user approval.",
+    "should": "Strong default. Deviate only with a stated reason.",
+    "consider": "Heuristic worth weighing for the given context."
+  },
+  "books": [
+    { "folder": "1", "title": "Clean Architecture", "author": "Robert C. Martin", "year": 2018 },
+    { "folder": "2", "title": "Clean Code", "author": "Robert C. Martin", "year": 2008 },
+    { "folder": "3", "title": "Design Patterns", "author": "Gang of Four", "year": 1994 },
+    { "folder": "4", "title": "Domain-Driven Design", "author": "Eric Evans", "year": 2003 },
+    { "folder": "5", "title": "The Design of Design", "author": "Frederick P. Brooks Jr.", "year": 2010 },
+    { "folder": "6", "title": "Fundamentals of Software Architecture", "author": "Richards & Ford", "year": 2020 },
+    { "folder": "7", "title": "Refactoring", "author": "Martin Fowler", "year": 2000 },
+    { "folder": "8", "title": "The Mythical Man-Month", "author": "Frederick P. Brooks Jr.", "year": 1975 },
+    { "folder": "9", "title": "The Pragmatic Programmer", "author": "Thomas & Hunt", "year": 2019 }
+  ],
+  "themes": [
+    {
+      "theme": "Naming & Readability",
+      "principles": [
+        {
+          "id": "STD-NAME-001",
+          "rule": "Use intention-revealing, pronounceable, searchable names from the problem/domain vocabulary. Classes are nouns, methods are verbs. Rename when a name no longer fits.",
+          "severity": "must",
+          "sources": ["CC-NAME-001", "DDD-LANG-001", "PP-NAMING-010"]
+        },
+        {
+          "id": "STD-NAME-002",
+          "rule": "Express intent in code, not comments. Delete commented-out/dead code. Keep only legal, intent, warning, TODO, and API-doc comments.",
+          "severity": "should",
+          "sources": ["CC-COMMENT-006", "REF-EXTRACT-005", "MMM-SELFDOC-007"]
+        }
+      ]
+    },
+    {
+      "theme": "Functions & Simplicity",
+      "principles": [
+        {
+          "id": "STD-FN-001",
+          "rule": "Keep functions small and do exactly one thing at a single level of abstraction. Minimize arguments (0-2 ideal); no boolean flag arguments.",
+          "severity": "must",
+          "sources": ["CC-FN-002", "CC-FN-003"]
+        },
+        {
+          "id": "STD-FN-002",
+          "rule": "No side effects in queries; apply Command-Query Separation and prefer side-effect-free functions.",
+          "severity": "should",
+          "sources": ["CC-FN-004", "DDD-SUPPLE-006"]
+        },
+        {
+          "id": "STD-SIMPLE-001",
+          "rule": "Follow the rules of simple design in order: passes all tests, no duplication, expresses intent, minimal classes/methods. Avoid speculative generality and overengineering.",
+          "severity": "should",
+          "sources": ["CC-SIMPLE-013", "GOF-NOOVER-005", "MMM-SECONDSYS-003"]
+        },
+        {
+          "id": "STD-CONDITION-001",
+          "rule": "Simplify conditionals with guard clauses; replace type-switch conditionals with polymorphism where it clarifies behavior.",
+          "severity": "consider",
+          "sources": ["REF-GUARD-008", "GOF-VARY-003"]
+        }
+      ]
+    },
+    {
+      "theme": "Duplication & Knowledge",
+      "principles": [
+        {
+          "id": "STD-DRY-001",
+          "rule": "DRY: every piece of knowledge has a single authoritative representation. Remove duplication by the third occurrence (Rule of Three).",
+          "severity": "must",
+          "sources": ["CC-DRY-005", "PP-DRY-002", "REF-RULEOF3-006"]
+        }
+      ]
+    },
+    {
+      "theme": "Coupling, Cohesion & Dependencies",
+      "principles": [
+        {
+          "id": "STD-DIP-001",
+          "rule": "Depend on abstractions, not concretions. Program to interfaces; inject dependencies; avoid global mutable state and singletons in core logic.",
+          "severity": "must",
+          "sources": ["CA-DIP-006", "GOF-INT-001", "GOF-SINGLETON-006"]
+        },
+        {
+          "id": "STD-DEPRULE-001",
+          "rule": "Follow the Dependency Rule: source dependencies point inward toward higher-level policy. Business logic must not import frameworks, DB, web, or UI.",
+          "severity": "must",
+          "sources": ["CA-DEP-001", "DDD-LAYER-002"]
+        },
+        {
+          "id": "STD-DECOUPLE-001",
+          "rule": "Keep components orthogonal and loosely coupled: keep strong connascence local, weaken coupling across boundaries. Apply Tell-Don't-Ask and the Law of Demeter; no train-wreck chains.",
+          "severity": "should",
+          "sources": ["PP-ORTHO-003", "FSA-CONNASCENCE-004", "CC-DEMETER-008"]
+        },
+        {
+          "id": "STD-NOCYCLE-001",
+          "rule": "No cyclic dependencies between components; the component dependency graph must be a DAG. Depend in the direction of stability and abstraction.",
+          "severity": "must",
+          "sources": ["CA-ADP-007", "CA-STAB-008"]
+        },
+        {
+          "id": "STD-COMPOSE-001",
+          "rule": "Favor composition over inheritance; use inheritance only for true is-a relationships honoring Liskov substitutability.",
+          "severity": "should",
+          "sources": ["GOF-COMP-002", "CA-LSP-004"]
+        },
+        {
+          "id": "STD-ISP-001",
+          "rule": "Interface Segregation: depend only on what you use; prefer narrow, client-specific interfaces.",
+          "severity": "should",
+          "sources": ["CA-ISP-005"]
+        }
+      ]
+    },
+    {
+      "theme": "Responsibilities & Structure",
+      "principles": [
+        {
+          "id": "STD-SRP-001",
+          "rule": "Single Responsibility: each module/class is responsible to one actor and has one reason to change. Keep classes small and cohesive.",
+          "severity": "must",
+          "sources": ["CA-SRP-002", "CC-CLASS-012"]
+        },
+        {
+          "id": "STD-OCP-001",
+          "rule": "Open-Closed: add behavior by adding code (extension points/polymorphism), not by modifying working code. Encapsulate what varies.",
+          "severity": "should",
+          "sources": ["CA-OCP-003", "GOF-VARY-003"]
+        },
+        {
+          "id": "STD-BOUNDARY-001",
+          "rule": "Draw boundaries between things that change for different reasons/rates; cross them only through well-defined interfaces. Wrap third-party APIs behind your own adapters.",
+          "severity": "should",
+          "sources": ["CA-BOUND-010", "CC-BOUND-010", "DDD-CONTEXT-007"]
+        },
+        {
+          "id": "STD-PARTITION-001",
+          "rule": "Partition into well-bounded components with clear responsibilities; prefer domain-based partitioning. Make structure scream the domain, not the framework.",
+          "severity": "consider",
+          "sources": ["FSA-COMPONENT-005", "CA-SCREAM-011"]
+        }
+      ]
+    },
+    {
+      "theme": "Domain Modeling",
+      "principles": [
+        {
+          "id": "STD-DOMAIN-001",
+          "rule": "Use the Ubiquitous Language in code. Distinguish Entities (identity) from Value Objects (immutable, attribute-defined). Model aggregates with a single root as the consistency boundary; keep persistence behind repositories/factories.",
+          "severity": "should",
+          "sources": ["DDD-LANG-001", "DDD-ENTVO-003", "DDD-AGG-004", "DDD-REPO-005"]
+        },
+        {
+          "id": "STD-DATA-001",
+          "rule": "Representation is the essence of programming: design the right data structures first; data design simplifies algorithms.",
+          "severity": "should",
+          "sources": ["MMM-DATA-004"]
+        }
+      ]
+    },
+    {
+      "theme": "Error Handling & Defensive Programming",
+      "principles": [
+        {
+          "id": "STD-ERR-001",
+          "rule": "Prefer exceptions to error codes; do not return or pass null (use special-case objects). Provide context with errors and isolate error handling.",
+          "severity": "must",
+          "sources": ["CC-ERR-009"]
+        },
+        {
+          "id": "STD-CRASH-001",
+          "rule": "Crash early with Design by Contract: make pre/postconditions and invariants explicit via assertions; fail fast instead of continuing in a corrupt state. Never swallow errors silently.",
+          "severity": "should",
+          "sources": ["PP-CRASH-005"]
+        }
+      ]
+    },
+    {
+      "theme": "Testing",
+      "principles": [
+        {
+          "id": "STD-TEST-001",
+          "rule": "Keep tests clean and first-class. Tests are FIRST (Fast, Independent, Repeatable, Self-validating, Timely), one concept each. A test is the first user of your code; prefer test-driven design and automate tests.",
+          "severity": "must",
+          "sources": ["CC-TEST-011", "PP-TESTFIRSTUSER-009", "PP-AUTOMATE-011"]
+        },
+        {
+          "id": "STD-TEST-002",
+          "rule": "Maintain self-testing code as the safety net for refactoring; reproduce every bug with a test before fixing it.",
+          "severity": "must",
+          "sources": ["REF-TESTS-002"]
+        },
+        {
+          "id": "STD-TESTABLE-001",
+          "rule": "Design for testability: use the Humble Object pattern to separate hard-to-test code (views, I/O) from testable logic.",
+          "severity": "should",
+          "sources": ["CA-HUMBLE-012"]
+        }
+      ]
+    },
+    {
+      "theme": "Evolution & Refactoring",
+      "principles": [
+        {
+          "id": "STD-REFACTOR-001",
+          "rule": "Refactor in small behavior-preserving steps with green tests after each step. Wear one hat at a time: never mix feature changes and refactoring in one commit.",
+          "severity": "must",
+          "sources": ["REF-SMALL-001", "REF-TWOHATS-003"]
+        },
+        {
+          "id": "STD-REFACTOR-002",
+          "rule": "Refactor early and often. Use preparatory refactoring to make a hard change easy. Read code smells as signals and don't live with broken windows.",
+          "severity": "should",
+          "sources": ["PP-REFACTOR-008", "REF-PREP-007", "REF-SMELLS-004", "PP-BROKENWINDOWS-006"]
+        },
+        {
+          "id": "STD-ETC-001",
+          "rule": "Good design is Easier To Change (ETC). Keep options open and decisions reversible; maximize decisions NOT yet made and minimize effort to build and maintain.",
+          "severity": "should",
+          "sources": ["PP-ETC-001", "CA-DETAIL-009", "CA-OPTIONS-013"]
+        },
+        {
+          "id": "STD-BOYSCOUT-001",
+          "rule": "Apply the Boy Scout Rule: leave the code cleaner than you found it.",
+          "severity": "should",
+          "sources": ["CC-BOYSCOUT-014"]
+        }
+      ]
+    },
+    {
+      "theme": "Process & Mindset",
+      "principles": [
+        {
+          "id": "STD-INTEGRITY-001",
+          "rule": "Conceptual integrity first: every solution follows one clear, coherent design concept. Consistency beats feature count and cleverness.",
+          "severity": "must",
+          "sources": ["DOD-INTEGRITY-001", "MMM-INTEGRITY-001"]
+        },
+        {
+          "id": "STD-ITERATE-001",
+          "rule": "Work iteratively, not waterfall. Build a thin working end-to-end version first (tracer bullets), then refine. Treat first cuts/prototypes as disposable learning.",
+          "severity": "should",
+          "sources": ["DOD-ITERATE-002", "PP-TRACER-007", "MMM-THROWAWAY-002"]
+        },
+        {
+          "id": "STD-EMPIRICAL-001",
+          "rule": "Be empirical and explicit: validate risky assumptions with prototypes/tests, and make assumptions explicit ('better wrong than vague'). Don't program by coincidence; only ship code you understand.",
+          "severity": "should",
+          "sources": ["DOD-EMPIRICAL-003", "DOD-ASSUME-004", "PP-NOCOINCIDENCE-004"]
+        },
+        {
+          "id": "STD-TRADEOFF-001",
+          "rule": "Everything is a trade-off: present significant decisions with explicit pros/cons and record the rationale (why matters more than how). Choose by context, not fashion.",
+          "severity": "should",
+          "sources": ["FSA-TRADEOFF-001", "FSA-WHY-002", "FSA-CONTEXT-007"]
+        },
+        {
+          "id": "STD-CONSTRAINT-001",
+          "rule": "Use constraints as friends: budget the critical scarce resource explicitly and let limits focus the design. Prioritize a small set of driving quality attributes; resist scope creep.",
+          "severity": "consider",
+          "sources": ["DOD-CONSTRAINT-005", "FSA-CHARS-003", "DOD-REQ-006"]
+        },
+        {
+          "id": "STD-BOLD-001",
+          "rule": "Invest the most care in the few bold, high-leverage decisions; they determine most of the outcome's quality. Design the bugs out through clear structure.",
+          "severity": "consider",
+          "sources": ["DOD-BOLD-007", "MMM-DESIGNOUT-005"]
+        },
+        {
+          "id": "STD-COMPLEXITY-001",
+          "rule": "No silver bullet: manage essential complexity through thoughtful design, not tool worship.",
+          "severity": "consider",
+          "sources": ["MMM-NOSILVER-006"]
+        }
+      ]
+    }
+  ]
+}

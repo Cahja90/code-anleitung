@@ -1,0 +1,10 @@
+# Never publish copyrighted book PDFs
+*.pdf
+*.PDF
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

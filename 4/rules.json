@@ -1,0 +1,65 @@
+{
+  "book": "Domain-Driven Design",
+  "author": "Eric Evans",
+  "year": 2003,
+  "source_folder": "4",
+  "language": "en",
+  "principles": [
+    {
+      "id": "DDD-LANG-001",
+      "rule": "Use the Ubiquitous Language: name classes, methods, and modules with the domain's terms so code, conversation, and docs share one vocabulary.",
+      "source": "DDD, Part I",
+      "severity": "must",
+      "checks": ["identifiers match domain terms", "no technical aliases for domain concepts"]
+    },
+    {
+      "id": "DDD-LAYER-002",
+      "rule": "Isolate domain logic in its own layer, free of UI, persistence, and infrastructure concerns.",
+      "source": "DDD, Ch. 4 (Layered Architecture)",
+      "severity": "must",
+      "checks": ["no SQL/HTTP/framework code in domain objects", "domain layer has no outward dependencies"]
+    },
+    {
+      "id": "DDD-ENTVO-003",
+      "rule": "Distinguish Entities (defined by identity/continuity) from Value Objects (defined by attributes); make Value Objects immutable.",
+      "source": "DDD, Ch. 5",
+      "severity": "should",
+      "checks": ["value objects have no setters", "entities have stable identity, not attribute-equality"]
+    },
+    {
+      "id": "DDD-AGG-004",
+      "rule": "Model Aggregates with a single root as the consistency and access boundary; external references go only to the root; enforce invariants within the boundary.",
+      "source": "DDD, Ch. 6 (Aggregates)",
+      "severity": "must",
+      "checks": ["external code references only aggregate roots", "invariants enforced inside the aggregate", "one transaction per aggregate"]
+    },
+    {
+      "id": "DDD-REPO-005",
+      "rule": "Use Repositories (collection-like, for aggregate roots only) and Factories (for complex creation) to keep persistence and construction out of domain logic.",
+      "source": "DDD, Ch. 6",
+      "severity": "should",
+      "checks": ["repositories exist only for aggregate roots", "construction invariants held by factories"]
+    },
+    {
+      "id": "DDD-SUPPLE-006",
+      "rule": "Aim for supple design: intention-revealing interfaces, side-effect-free functions, explicit assertions, and making implicit concepts explicit.",
+      "source": "DDD, Part III",
+      "severity": "should",
+      "checks": ["queries are side-effect-free", "hidden rules/specifications modeled as objects"]
+    },
+    {
+      "id": "DDD-CONTEXT-007",
+      "rule": "Define explicit Bounded Contexts where the model and language are consistent; protect boundaries with an Anticorruption Layer when integrating other models.",
+      "source": "DDD, Part IV",
+      "severity": "should",
+      "checks": ["clear context boundaries", "translation/adapter layer at external integrations"]
+    },
+    {
+      "id": "DDD-CORE-008",
+      "rule": "Identify and focus effort on the Core Domain; separate generic subdomains and supporting code from the differentiating core.",
+      "source": "DDD, Part IV (Distillation)",
+      "severity": "consider",
+      "checks": ["core domain clearly identified and prioritized"]
+    }
+  ]
+}

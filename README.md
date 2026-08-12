@@ -1,57 +1,98 @@
-# CODE ANLEITUNG — mein Regelwerk für sauberen Code
+# CODE ANLEITUNG
 
-Das ist mein persönliches **Coding-Framework**: klassische Software-Bücher, verdichtet zu Regeln, die ich in Projekten verbindlich nutze — auch wenn KI mitarbeitet.
+Persönliches Clean-Code-Regelwerk aus **9 Standardwerken** — verdichtet zu Regeln,
+Zusammenfassungen und einem Cursor-Framework, das die KI beim Coden mitführt.
 
-## Wofür das da ist
+**Keine Buch-PDFs** in diesem Repo. Inhalt = deine / meine Destillation:
+Regeln (`rules.json`), Zusammenfassungen (`zusammenfassung.md`) und das
+operative Framework (`_framework/`).
 
-Gute Ideen allein reichen nicht. Ohne klare Regeln wird Code schnell unübersichtlich — besonders bei Automation und KI-Unterstützung.
+## Schnellstart (damit die KI bei dir so arbeitet)
 
-Deshalb habe ich mir ein festes Pack gebaut:
+### Option A — ein Projekt (empfohlen zum Teilen im Team)
 
-- **Was** guter Code ist (Namen, kleine Funktionen, Struktur, …)
-- **Wie** Schritt für Schritt gearbeitet wird
-- **Was** erlaubt ist und was nicht
+Im **Projekt-Root** (PowerShell):
 
-So bleibt der Output strukturierter, es entstehen weniger Fehler, und jedes Inkrement lässt sich prüfen.
+```powershell
+git clone https://github.com/Cahja90/code-anleitung.git
+cd dein-projekt
+..\code-anleitung\INSTALL.ps1 -TargetProject .
+```
 
-## Was drin steckt (Konzept)
+Oder manuell:
 
-Neun Standardwerke → je Buch:
+```powershell
+New-Item -ItemType Directory -Force -Path ".cursor\rules" | Out-Null
+Copy-Item "pfad\to\code-anleitung\_framework\clean-code-framework.mdc" ".cursor\rules\"
+Copy-Item "pfad\to\code-anleitung\_framework\coding-standards.json" ".cursor\"
+```
 
-| Teil | Zweck |
-|------|--------|
-| Zusammenfassung | Kernaussagen verständlich aufbereitet |
-| `rules.json` | konkrete Coding-Regeln mit Priorität und Checks |
-| Framework-Dateien | gebündelte Regeln für den Alltag im Projekt |
+Cursor neu laden / Chat neu starten. Die Rule hat `alwaysApply: true`.
 
-Die Bücher (Auswahl):
+### Option B — global für alle Cursor-Projekte
 
-1. Clean Architecture  
-2. Clean Code  
-3. Design Patterns (GoF)  
-4. Domain-Driven Design  
-5. The Design of Design  
-6. Fundamentals of Software Architecture  
-7. Refactoring  
-8. The Mythical Man-Month  
-9. The Pragmatic Programmer  
+```powershell
+.\INSTALL.ps1 -Global
+```
 
-Dazu ein **operatives Framework** (Aggregat): eine Regel-Datei für den Arbeitsalltag und eine zentrale `coding-standards`-Quelle.
+Kopiert die `.mdc` nach `%USERPROFILE%\.cursor\rules\`.
 
-## Wie ich das nutze
+### Linux / macOS
 
-1. **Rohbau zuerst:** Ziel, Ordner, Prozess, Gates  
-2. **Regeln aktiv:** beim Umsetzen gelten die CODE-ANLEITUNG-Standards  
-3. **Eine Rolle pro Task:** planen, bauen, prüfen — nicht alles vermischt  
-4. **Step by step:** kleine Schritte, prüfen, weiter  
+```bash
+chmod +x INSTALL.sh
+./INSTALL.sh                 # aktuelles Verzeichnis = Projekt
+./INSTALL.sh --global        # globale Cursor-Rules
+./INSTALL.sh /pfad/zum/projekt
+```
 
-In Kunden- und Portfolio-Projekten (Pipelines, Apps, Agent-Workflows) ist das der gemeinsame Qualitätsmaßstab.
+Details: [INSTALL.md](./INSTALL.md)
 
-## Was hier bewusst fehlt
+## Was drin ist
 
-Dieses Repo ist die **öffentliche Beschreibung**.  
-Die Original-PDFs, vollständigen Regel-JSONs und lokalen Sync-Pfade bleiben **privat** (Copyright + Betriebsgeheimnis).
+```
+_framework/
+  clean-code-framework.mdc   ← Cursor Always-On Rule (MUSS installiert werden)
+  coding-standards.json      ← aggregierte Regeln (Single Source of Truth)
+1/ … 9/                      ← je Buch: rules.json + zusammenfassung.md
+INSTALL.ps1 / INSTALL.sh
+```
 
----
+| Ordner | Buch |
+|--------|------|
+| 1 | Clean Architecture — Robert C. Martin |
+| 2 | Clean Code — Robert C. Martin |
+| 3 | Design Patterns (GoF) |
+| 4 | Domain-Driven Design — Eric Evans |
+| 5 | The Design of Design — Fred Brooks |
+| 6 | Fundamentals of Software Architecture — Richards & Ford |
+| 7 | Refactoring — Martin Fowler |
+| 8 | The Mythical Man-Month — Fred Brooks |
+| 9 | The Pragmatic Programmer — Hunt & Thomas |
 
-*Showcase für LinkedIn und Portfolio — kein Quellcode-Dump.*
+## Schweregrade
+
+- **MUST** — harte Regel, nur mit ausdrücklicher Freigabe abweichen  
+- **SHOULD** — starke Voreinstellung, Abweichung nur mit Begründung  
+- **CONSIDER** — Heuristik, je nach Kontext  
+
+## So nutzen (Alltag)
+
+1. Framework installieren (oben)  
+2. Im Projekt: Rohbau zuerst (Ziel, Ordner, Gates)  
+3. Eine Rolle pro Task (planen / bauen / prüfen)  
+4. Bei Konflikten: siehe Reihenfolge in der `.mdc` (Tests & Korrektheit zuerst)  
+
+Die KI folgt den Regeln **nur**, wenn die `.mdc` in Cursor-Rules liegt.
+Nur Klonen ohne Install reicht nicht.
+
+## Hinweis zu den Büchern
+
+Die Original-Bücher bleiben urheberrechtlich geschützt. Dieses Repo enthält
+**keine** Verlags-PDFs, sondern eigene Zusammenfassungen und Handlungsregeln.
+Die Bücher bitte legal erwerben, wenn du die Primärquellen brauchst.
+
+## License
+
+MIT für **dieses** Regelwerk und die Dateien in diesem Repo — siehe [LICENSE](./LICENSE).  
+Buchtitel und Autoren bleiben Rechte der jeweiligen Rechteinhaber.

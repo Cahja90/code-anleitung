@@ -1,0 +1,87 @@
+{
+  "book": "The Pragmatic Programmer",
+  "author": "David Thomas & Andrew Hunt",
+  "year": 2019,
+  "edition": "20th Anniversary Edition",
+  "source_folder": "9",
+  "language": "en",
+  "principles": [
+    {
+      "id": "PP-ETC-001",
+      "rule": "Good design is Easier To Change (ETC). When in doubt, choose the option that keeps future change cheap.",
+      "source": "The Pragmatic Programmer, Topic 8",
+      "severity": "must",
+      "checks": ["decisions reduce coupling and increase changeability", "no needless rigidity"]
+    },
+    {
+      "id": "PP-DRY-002",
+      "rule": "DRY: every piece of knowledge has a single, unambiguous, authoritative representation. Avoid duplicating knowledge, not just code.",
+      "source": "The Pragmatic Programmer, Topic 9",
+      "severity": "must",
+      "checks": ["no duplicated logic or knowledge", "single source of truth for each fact"]
+    },
+    {
+      "id": "PP-ORTHO-003",
+      "rule": "Keep components orthogonal/decoupled: a change in one area must not ripple into unrelated areas. Apply Tell-Don't-Ask and the Law of Demeter.",
+      "source": "The Pragmatic Programmer, Topic 10, 28",
+      "severity": "should",
+      "checks": ["modules independent", "no long object navigation chains"]
+    },
+    {
+      "id": "PP-NOCOINCIDENCE-004",
+      "rule": "Don't program by coincidence: only write code you fully understand; rely on reasons, not luck.",
+      "source": "The Pragmatic Programmer, Topic 38",
+      "severity": "must",
+      "checks": ["each construct has a known reason", "no cargo-culted code that 'just works'"]
+    },
+    {
+      "id": "PP-CRASH-005",
+      "rule": "Crash early and use Design by Contract: make pre/postconditions and invariants explicit with assertions; fail fast instead of continuing with a corrupt state.",
+      "source": "The Pragmatic Programmer, Topic 23-25",
+      "severity": "should",
+      "checks": ["assertions guard impossible states", "no silent error swallowing"]
+    },
+    {
+      "id": "PP-BROKENWINDOWS-006",
+      "rule": "Don't live with broken windows: fix small defects and bad code as soon as you see them to prevent decay.",
+      "source": "The Pragmatic Programmer, Topic 3",
+      "severity": "should",
+      "checks": ["no accumulating known defects left untouched in edited code"]
+    },
+    {
+      "id": "PP-TRACER-007",
+      "rule": "Prefer tracer bullets: build a thin, working end-to-end skeleton early, then flesh it out. Throw prototypes away after learning from them.",
+      "source": "The Pragmatic Programmer, Topic 12-13",
+      "severity": "consider",
+      "checks": ["end-to-end path working early", "prototypes not shipped as production"]
+    },
+    {
+      "id": "PP-REFACTOR-008",
+      "rule": "Refactor early and often; treat refactoring as continuous gardening, not a big-bang event.",
+      "source": "The Pragmatic Programmer, Topic 40",
+      "severity": "should",
+      "checks": ["incremental cleanup alongside feature work"]
+    },
+    {
+      "id": "PP-TESTFIRSTUSER-009",
+      "rule": "A test is the first user of your code: write tests to get feedback on design, automate them, and keep them ruthless and continuous.",
+      "source": "The Pragmatic Programmer, Topic 41",
+      "severity": "should",
+      "checks": ["testable design", "automated test coverage for important behavior"]
+    },
+    {
+      "id": "PP-NAMING-010",
+      "rule": "Name things well and rename when names no longer fit; names carry intent and domain meaning.",
+      "source": "The Pragmatic Programmer, Topic 42",
+      "severity": "should",
+      "checks": ["intent-revealing names", "stale names corrected"]
+    },
+    {
+      "id": "PP-AUTOMATE-011",
+      "rule": "Automate everything reproducible and always use version control; do not rely on manual, error-prone procedures.",
+      "source": "The Pragmatic Programmer, Topic 11, 49-51",
+      "severity": "should",
+      "checks": ["repeatable tasks scripted/automated", "work under version control"]
+    }
+  ]
+}

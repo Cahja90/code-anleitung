@@ -1,0 +1,58 @@
+{
+  "book": "The Mythical Man-Month",
+  "author": "Frederick P. Brooks Jr.",
+  "year": 1975,
+  "source_folder": "8",
+  "language": "en",
+  "principles": [
+    {
+      "id": "MMM-INTEGRITY-001",
+      "rule": "Conceptual integrity is the most important consideration in design: keep the system coherent under one unifying idea rather than a pile of uncoordinated features.",
+      "source": "The Mythical Man-Month, Ch. 4",
+      "severity": "must",
+      "checks": ["a single coherent concept guides the design", "features added consistently, not ad hoc"]
+    },
+    {
+      "id": "MMM-THROWAWAY-002",
+      "rule": "Plan to throw one away: treat the first cut as a prototype and grow the system iteratively/incrementally; expect and plan for change.",
+      "source": "The Mythical Man-Month, Ch. 11",
+      "severity": "should",
+      "checks": ["prototype risky parts first", "design accommodates change"]
+    },
+    {
+      "id": "MMM-SECONDSYS-003",
+      "rule": "Beware the second-system effect: when rewriting or extending, resist over-engineering and feature bloat from ideas deferred earlier.",
+      "source": "The Mythical Man-Month, Ch. 5",
+      "severity": "should",
+      "checks": ["rewrites stay disciplined in scope", "no gratuitous gold-plating"]
+    },
+    {
+      "id": "MMM-DATA-004",
+      "rule": "Representation is the essence of programming: choose the right data structures first; good data design makes algorithms simple.",
+      "source": "The Mythical Man-Month, Ch. 9",
+      "severity": "should",
+      "checks": ["data model designed deliberately before/alongside logic"]
+    },
+    {
+      "id": "MMM-DESIGNOUT-005",
+      "rule": "Design the bugs out: prevent defects through clear design rather than relying on later debugging.",
+      "source": "The Mythical Man-Month, Ch. 13",
+      "severity": "should",
+      "checks": ["clear structure that prevents whole classes of errors"]
+    },
+    {
+      "id": "MMM-NOSILVER-006",
+      "rule": "No silver bullet: manage essential complexity through thoughtful design; do not expect a single tool/technique/framework to solve inherent complexity.",
+      "source": "The Mythical Man-Month, Ch. 16",
+      "severity": "consider",
+      "checks": ["complexity addressed by design, not by tool worship"]
+    },
+    {
+      "id": "MMM-SELFDOC-007",
+      "rule": "Favor self-documenting programs: structure and naming should explain the code; keep necessary written specs precise.",
+      "source": "The Mythical Man-Month, Ch. 15",
+      "severity": "should",
+      "checks": ["code readable without external explanation", "specs precise where needed"]
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "book": "Clean Architecture",
+  "author": "Robert C. Martin",
+  "year": 2018,
+  "source_folder": "1",
+  "language": "en",
+  "principles": [
+    {
+      "id": "CA-DEP-001",
+      "rule": "Follow the Dependency Rule: source code dependencies point only inward, toward higher-level policy. Inner layers must not know anything about outer layers.",
+      "source": "Clean Architecture, Ch. 22",
+      "severity": "must",
+      "checks": ["business rules import no frameworks", "no DB/UI/web types in entities or use cases", "data formats of outer layers never leak inward"]
+    },
+    {
+      "id": "CA-SRP-002",
+      "rule": "Single Responsibility: each module is responsible to exactly one actor/stakeholder, i.e. has one reason to change.",
+      "source": "Clean Architecture, Ch. 7",
+      "severity": "must",
+      "checks": ["no class mixing concerns of different actors", "split modules that change for different reasons"]
+    },
+    {
+      "id": "CA-OCP-003",
+      "rule": "Open-Closed: add new behavior by adding code, not by modifying existing working code. Protect higher-level components from changes in lower-level ones.",
+      "source": "Clean Architecture, Ch. 8",
+      "severity": "should",
+      "checks": ["new features via extension points/polymorphism", "directional control via interfaces"]
+    },
+    {
+      "id": "CA-LSP-004",
+      "rule": "Liskov Substitution: subtypes must be substitutable for their base types without special-casing.",
+      "source": "Clean Architecture, Ch. 9",
+      "severity": "must",
+      "checks": ["no type checks/instanceof branching to handle a subtype", "subtypes honor base contracts"]
+    },
+    {
+      "id": "CA-ISP-005",
+      "rule": "Interface Segregation: do not depend on things you do not use. Prefer narrow, client-specific interfaces over fat ones.",
+      "source": "Clean Architecture, Ch. 10",
+      "severity": "should",
+      "checks": ["interfaces expose only methods the client needs", "no forced dependency on unused members"]
+    },
+    {
+      "id": "CA-DIP-006",
+      "rule": "Dependency Inversion: depend on abstractions, not concretions. Stable, high-level policy must not reference volatile concrete classes; invert via interfaces.",
+      "source": "Clean Architecture, Ch. 11",
+      "severity": "must",
+      "checks": ["high-level modules import interfaces only", "concrete implementations injected at the boundary (Main)"]
+    },
+    {
+      "id": "CA-ADP-007",
+      "rule": "No cyclic dependencies between components. Break cycles with DIP or by extracting a new component.",
+      "source": "Clean Architecture, Ch. 14",
+      "severity": "must",
+      "checks": ["component dependency graph is a DAG"]
+    },
+    {
+      "id": "CA-STAB-008",
+      "rule": "Depend in the direction of stability and abstraction: stable components are abstract (policy); unstable components are concrete (details).",
+      "source": "Clean Architecture, Ch. 14",
+      "severity": "should",
+      "checks": ["volatile code does not sit at the stable core", "abstractions live in stable components"]
+    },
+    {
+      "id": "CA-DETAIL-009",
+      "rule": "Treat database, web, and frameworks as details/plugins. Keep them out of the business core and defer/isolate these decisions as long as possible.",
+      "source": "Clean Architecture, Ch. 30-32",
+      "severity": "must",
+      "checks": ["no ORM/HTTP/framework imports in entities or use cases", "persistence behind a gateway interface", "framework usage isolated at the edge"]
+    },
+    {
+      "id": "CA-BOUND-010",
+      "rule": "Draw architectural boundaries between things that change for different reasons or at different rates; cross boundaries only through well-defined interfaces.",
+      "source": "Clean Architecture, Ch. 17-18",
+      "severity": "should",
+      "checks": ["clear ports/adapters at boundaries", "no business logic in controllers/presenters"]
+    },
+    {
+      "id": "CA-SCREAM-011",
+      "rule": "Make the structure scream the application's purpose, not the framework. Prefer package-by-feature/component over package-by-layer.",
+      "source": "Clean Architecture, Ch. 21, 34",
+      "severity": "consider",
+      "checks": ["top-level packages reflect domain, not tech", "encapsulation enforced via visibility modifiers"]
+    },
+    {
+      "id": "CA-HUMBLE-012",
+      "rule": "Use the Humble Object pattern: separate hard-to-test code (views, I/O) from testable logic (presenters, interactors).",
+      "source": "Clean Architecture, Ch. 23",
+      "severity": "should",
+      "checks": ["views contain no logic", "logic testable without GUI/DB"]
+    },
+    {
+      "id": "CA-OPTIONS-013",
+      "rule": "A good architecture maximizes the number of decisions NOT made (keep options open) and minimizes the human effort to build and maintain the system.",
+      "source": "Clean Architecture, Ch. 1, 15",
+      "severity": "should",
+      "checks": ["key infrastructure choices are deferrable and reversible"]
+    }
+  ]
+}

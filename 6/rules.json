@@ -1,0 +1,58 @@
+{
+  "book": "Fundamentals of Software Architecture",
+  "author": "Mark Richards & Neal Ford",
+  "year": 2020,
+  "source_folder": "6",
+  "language": "en",
+  "principles": [
+    {
+      "id": "FSA-TRADEOFF-001",
+      "rule": "First Law: everything in architecture is a trade-off. Present options with explicit pros/cons; avoid claiming a single 'best' solution.",
+      "source": "Fundamentals of Software Architecture, Ch. 1",
+      "severity": "must",
+      "checks": ["alternatives and their trade-offs stated for significant decisions"]
+    },
+    {
+      "id": "FSA-WHY-002",
+      "rule": "Second Law: why matters more than how. Record the rationale behind significant decisions (ADR-style: context, decision, consequences).",
+      "source": "Fundamentals of Software Architecture, Ch. 19",
+      "severity": "should",
+      "checks": ["rationale captured for non-trivial design decisions"]
+    },
+    {
+      "id": "FSA-CHARS-003",
+      "rule": "Identify and prioritize a small number (ideally under 7) of driving architecture characteristics; do not try to maximize all of them.",
+      "source": "Fundamentals of Software Architecture, Ch. 4-6",
+      "severity": "should",
+      "checks": ["explicit list of driving quality attributes", "competing -ilities consciously balanced"]
+    },
+    {
+      "id": "FSA-CONNASCENCE-004",
+      "rule": "Manage coupling via connascence: keep strong connascence local and weaken/minimize coupling across module boundaries.",
+      "source": "Fundamentals of Software Architecture, Ch. 3",
+      "severity": "should",
+      "checks": ["low coupling across boundaries", "strongly coupled code kept together"]
+    },
+    {
+      "id": "FSA-COMPONENT-005",
+      "rule": "Partition into well-bounded components/modules with clear responsibilities; prefer domain-based partitioning over purely technical layering.",
+      "source": "Fundamentals of Software Architecture, Ch. 8",
+      "severity": "consider",
+      "checks": ["components map to domain concerns", "clear single responsibility per component"]
+    },
+    {
+      "id": "FSA-FITNESS-006",
+      "rule": "Protect key architecture characteristics with fitness functions: automated checks that guard the important -ilities over time.",
+      "source": "Fundamentals of Software Architecture, Ch. 6",
+      "severity": "consider",
+      "checks": ["automated guards for critical quality attributes where feasible"]
+    },
+    {
+      "id": "FSA-CONTEXT-007",
+      "rule": "Decisions are a product of their context; do not cargo-cult styles. Choose architecture style by analyzing the situation's trade-offs.",
+      "source": "Fundamentals of Software Architecture, Ch. 1, 9-17",
+      "severity": "should",
+      "checks": ["style choice justified by current constraints, not fashion"]
+    }
+  ]
+}

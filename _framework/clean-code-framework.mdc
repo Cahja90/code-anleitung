@@ -1,0 +1,62 @@
+---
+description: Clean Code Framework distilled from 9 canonical software engineering books (Clean Architecture, Clean Code, Design Patterns, DDD, The Design of Design, Fundamentals of Software Architecture, Refactoring, The Mythical Man-Month, The Pragmatic Programmer). Apply on every coding task to produce clean code from the start.
+alwaysApply: true
+---
+
+# Clean Code Framework
+
+Operating instructions for writing and changing code. Severity: **MUST** = hard rule, **SHOULD** = strong default (deviate only with a stated reason), **CONSIDER** = weigh for context. Full rationale and per-book detail live in `_framework/coding-standards.json` and the per-book folders `1`–`9` (`rules.json`, `zusammenfassung.md`) in this repository.
+
+## 1. Guiding mindset
+- **CONSIDER** conceptual integrity first: every change follows one clear, coherent design concept. Consistency beats feature count and cleverness.
+- **SHOULD** optimize for ETC ("Easier To Change"): prefer the option that keeps future change cheap; keep important decisions reversible and deferred.
+- **SHOULD** be empirical: only write code you fully understand (don't program by coincidence); validate risky assumptions; make assumptions explicit rather than vague.
+- **SHOULD** treat every decision as a trade-off: state pros/cons for significant choices and record the "why". Choose by context, not fashion. No silver bullets.
+
+## 2. Naming & readability (MUST)
+- Intention-revealing, pronounceable, searchable names from the domain vocabulary (Ubiquitous Language). Classes = nouns, methods = verbs. Rename when names stop fitting.
+- Express intent in code, not comments. Delete dead/commented-out code. Keep only legal, intent, warning, TODO, and API-doc comments.
+
+## 3. Functions & simplicity
+- **MUST** keep functions small, doing one thing at one level of abstraction. Arguments 0-2 ideal; no boolean flag arguments.
+- **SHOULD** no side effects in queries (Command-Query Separation); prefer pure functions.
+- **SHOULD** simplest design that passes tests, removes duplication, and expresses intent. Avoid speculative generality, gold-plating, and the second-system effect.
+- **CONSIDER** guard clauses over nested conditionals; polymorphism over type-switching.
+
+## 4. DRY (MUST)
+- Every piece of knowledge has a single authoritative representation. Remove duplication by the third occurrence (Rule of Three).
+
+## 5. Dependencies, coupling & cohesion
+- **MUST** depend on abstractions, not concretions: program to interfaces, inject dependencies, avoid global mutable state and singletons in core logic.
+- **MUST** follow the Dependency Rule: dependencies point inward to higher-level policy. Domain/business logic must not import frameworks, DB, web, or UI. Treat database, web, and frameworks as replaceable details behind interfaces.
+- **MUST** no cyclic dependencies (keep the module graph a DAG); depend toward stability and abstraction.
+- **MUST** Single Responsibility: one reason to change per module; keep classes small and cohesive.
+- **SHOULD** keep modules orthogonal and loosely coupled; Tell-Don't-Ask; respect the Law of Demeter (no train-wreck chains). Keep strong coupling local.
+- **SHOULD** Open-Closed: extend via new code/polymorphism; encapsulate what varies.
+- **SHOULD** favor composition over inheritance; inheritance only for true is-a (Liskov-safe). Narrow, client-specific interfaces (ISP).
+- **SHOULD** draw boundaries between things that change differently; wrap third-party APIs behind your own adapters; protect context boundaries with an anticorruption layer.
+
+## 6. Domain modeling (SHOULD)
+- Isolate domain logic in its own layer, free of infrastructure. Distinguish Entities (identity) from immutable Value Objects. Model aggregates with one root as the consistency boundary; keep persistence behind repositories/factories.
+- Design the right data structures first ("representation is the essence of programming").
+
+## 7. Error handling (MUST)
+- Prefer exceptions to error codes; do not return or pass null (use special-case objects). Add context to errors; isolate error handling.
+- **SHOULD** crash early with Design by Contract: assert pre/postconditions and invariants; fail fast instead of running with corrupt state. Never swallow errors silently.
+
+## 8. Testing (MUST)
+- Tests are first-class and FIRST (Fast, Independent, Repeatable, Self-validating, Timely), one concept each. A test is the first user of your code; prefer test-driven design; automate tests.
+- Keep self-testing code as the refactoring safety net; reproduce every bug with a failing test before fixing it.
+- **SHOULD** design for testability (Humble Object: separate views/I/O from logic).
+
+## 9. Evolution & refactoring
+- **MUST** refactor in small behavior-preserving steps with tests green after each step. Wear one hat at a time: never mix feature work and refactoring in the same commit.
+- **SHOULD** refactor early and often; use preparatory refactoring to make a hard change easy; read code smells (long functions, duplication, feature envy, primitive obsession, large classes) as signals. Don't live with broken windows. Leave code cleaner than you found it (Boy Scout Rule).
+
+## 10. Delivery
+- **SHOULD** build a thin working end-to-end slice first (tracer bullets), then flesh it out; treat prototypes as disposable learning, not production.
+- **SHOULD** keep work under version control and automate repeatable tasks.
+- **CONSIDER** budget the critical scarce resource explicitly; prioritize a small set of driving quality attributes; resist scope creep; invest most care in the few high-leverage decisions.
+
+## Conflict resolution
+When rules conflict, prefer in this order: correctness & tests > conceptual integrity > changeability (ETC) & decoupling > simplicity > local style. When unsure, state the trade-off and pick the most reversible option.

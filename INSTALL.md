@@ -1,44 +1,49 @@
-# Installation — CODE ANLEITUNG in Cursor
+# Installation — CODE ANLEITUNG
 
-Ziel: Die Datei `clean-code-framework.mdc` landet in den Cursor-Rules,
-damit die KI die Regeln **automatisch** anwendet (`alwaysApply: true`).
+Nach dem Klonen die Regeln **ins Zielprojekt kopieren**. Nur Klonen reicht nicht:
+die KI liest die `.mdc` erst, wenn sie in `.cursor/rules/` liegt.
 
 ## Voraussetzungen
 
-- [Cursor](https://cursor.com) installiert  
-- Dieses Repo geklont oder als ZIP entpackt  
+- [Cursor](https://cursor.com) (für die automatische Anwendung)
+- Dieses Repo geklont oder als ZIP entpackt
 
-## 1. Projekt-Installation (Team / ein Repo)
+Ohne Cursor: trotzdem `_framework/schreibweise.mdc` und `_framework/editorconfig`
+ins Projekt legen — Editor und Menschen folgen denselben Tabellen.
 
-Im Verzeichnis deines Projekts:
+## 1. Ein Projekt (empfohlen)
+
+Im Verzeichnis des **Zielprojekts**:
 
 **Windows (PowerShell)**
 
 ```powershell
-# von überall, Pfad zum Klon anpassen:
-& "D:\Pfad\code-anleitung\INSTALL.ps1" -TargetProject "D:\Pfad\dein-projekt"
+git clone https://github.com/Cahja90/code-anleitung.git
+& ".\code-anleitung\INSTALL.ps1" -TargetProject "D:\Pfad\dein-projekt"
 ```
 
 **macOS / Linux**
 
 ```bash
-/pfad/code-anleitung/INSTALL.sh /pfad/dein-projekt
+git clone https://github.com/Cahja90/code-anleitung.git
+./code-anleitung/INSTALL.sh /pfad/dein-projekt
 ```
 
 Ergebnis:
 
 ```
 dein-projekt/
+  .editorconfig
   .cursor/
     rules/
       clean-code-framework.mdc
-    coding-standards.json    # optional, Referenz
+      schreibweise.mdc
+    coding-standards.json
 ```
 
-Committe `.cursor/rules/clean-code-framework.mdc` mit, wenn das Team denselben
-Maßstab haben soll.
+Diese Dateien **mitcommitten**, damit das Team denselben Maßstab hat.
 
-## 2. Globale Installation (alle Projekte auf dem Rechner)
+## 2. Global (alle Cursor-Projekte auf dem Rechner)
 
 **Windows**
 
@@ -46,26 +51,26 @@ Maßstab haben soll.
 .\INSTALL.ps1 -Global
 ```
 
-→ `%USERPROFILE%\.cursor\rules\clean-code-framework.mdc`
-
 **macOS / Linux**
 
 ```bash
 ./INSTALL.sh --global
 ```
 
-→ `~/.cursor/rules/clean-code-framework.mdc`
+→ `~/.cursor/rules/clean-code-framework.mdc`  
+→ `~/.cursor/rules/schreibweise.mdc`
 
 ## 3. Nach der Installation
 
-1. Cursor neu starten oder Fenster neu laden  
-2. Neuen Agent-/Chat starten  
-3. Kurz prüfen: Agent sollte MUST/SHOULD-Regeln aus dem Framework beachten  
+1. Cursor neu starten oder Fenster neu laden
+2. Neuen Agent-/Chat starten
+3. Prüfen: neue Namen `snake_case`, Kommentare klein ohne Leerzeichen nach `#`
 
-Optional die Ordner `1`–`9` und `coding-standards.json` im Repo lassen —
-zum Nachschlagen und für tiefere Begründungen. Die **aktive** Steuerung ist die `.mdc`.
+Die **aktive** Steuerung sind die beiden `.mdc`. Ordner `1`–`9` und
+`coding-standards.json` sind Nachschlagewerk.
 
 ## Deinstallieren
 
-- Projekt: `.cursor/rules/clean-code-framework.mdc` löschen  
-- Global: dieselbe Datei unter `~/.cursor/rules/` löschen  
+- Projekt: `.cursor/rules/clean-code-framework.mdc` und `schreibweise.mdc` löschen
+- Global: dieselben Dateien unter `~/.cursor/rules/`
+- `.editorconfig` nur löschen, wenn es aus diesem Pack stammt

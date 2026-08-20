@@ -1,0 +1,70 @@
+---
+description: Identifier spelling, comments, and short text next to code. Apply on every coding task. MUST.
+alwaysApply: true
+---
+
+# Schreibweise (MUST)
+
+Gilt für **jeden neuen Identifier**. Keine Ausnahme wegen Sprache, Framework-Mode oder "so macht man das üblich".
+
+Ziel: ein Name, eine Schreibweise, lesbarer Code, keine Mischstile.
+
+## Namen
+
+| Was | Form | Beispiel |
+|---|---|---|
+| Variablen und Funktionen | klein + unterstrich | `user_name` · `get_data()` |
+| Klassen und Types | groß am Anfang | `class TradingAgent:` |
+| Konstanten | komplett GROSS + unterstrich | `MAX_RISK = 0.02` |
+| Module und Dateien | immer klein | `utils.py` · `trade_agent.py` |
+
+- Ein Name = eine Schreibweise. Nie mischen (`userName` + `user_name` ist verboten).
+- Tippfehler = Bugs. `usre_name` ist ein anderer Name als `user_name`. Vorhandene Namen exakt kopieren, nie aus dem Kopf tippen.
+- Kein camelCase für neue Variablen und Funktionen. Kein kebab-case für Code-Identifier.
+
+## Bestehender Code
+
+- Läuft der Code? Vorhandene Namen bleiben. Keine Umbauten nur wegen Stil.
+- Framework- und API-Pflichtnamen nicht anfassen (`build()`, `useState`, SDK-Methoden, fremde JSON-Keys).
+- Neue Namen daneben folgen trotzdem der Tabelle.
+
+## Kommentare im Code
+
+Nur wenn der Code allein nicht reicht. Dann:
+
+- Kurz. Alles klein, auch der erste Buchstabe.
+- **Kein Leerzeichen nach `#`.** Text beginnt sofort.
+- richtig: `#lädt die daten`
+- richtig: `#fehler abfangen`
+- falsch: `# lädt die daten`
+- Gleich für `//` in js/ts/dart/c: `//lädt die daten` nicht `// lädt die daten`.
+- Keine Satzanfang-Großschreibung in Code-Kommentaren.
+
+## Text neben dem Code
+
+Gilt für Kommentare, Commits, README, Notizen. Nicht für Identifier (die bleiben snake_case / PascalCase / ALL_CAPS).
+
+- Kurz. Ein Gedanke, wenige Wörter. Lieber `projekt anlegen` als ein langer Satz.
+- Alltagswörter. Keine Mode-Namen, kein "center / hub / layer".
+- falsch: `projektordner analysen center` · `initialisiert die persistenzschicht` · `feat: scaffold repo`
+- richtig: `projekt anlegen` · `ordner analyse` · `stand speichern` · `online stellen`
+- Commits klein und sachlich: `projekt lokal anlegen`
+- README: kurze Überschriften (`stand`, `stack`), Sätze ohne Geschwurbel
+- Kein Tippfehler in Namen und Pfaden.
+
+## Markdown (einzige Ausnahme: Leerzeichen)
+
+- Nur in `.md` / `.mdc` nach `#` / `##` / `###` **immer** ein Leerzeichen: `# titel` · `## stand`
+- In Code-Dateien gilt das nicht. Dort nie ein Leerzeichen nach `#`.
+
+## Form (Editor)
+
+- Einrückung: Spaces, keine Tabs. Python 4, Zeilenlänge 88 (Black).
+- TypeScript: `strict: true`.
+- Keine stillen `except:` / geschluckten Fehler.
+
+## Konflikt
+
+Diese Schreibweise sticht lokale Gewohnheit und "idiomatisch für JS/Dart".
+Sinnvolle Namen (Absicht erkennbar) bleiben Pflicht laut `clean-code-framework.mdc`.
+Korrektheit und Tests stehen weiter über Stil.

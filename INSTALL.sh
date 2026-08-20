@@ -1,35 +1,47 @@
 #!/usr/bin/env bash
-# Install CODE ANLEITUNG Cursor rules (no PDFs).
+#installiert cursor-rules (keine pdfs)
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")" && pwd)"
-MDC="$ROOT/_framework/clean-code-framework.mdc"
-JSON="$ROOT/_framework/coding-standards.json"
+FRAMEWORK="$ROOT/_framework"
+RULES=(clean-code-framework.mdc schreibweise.mdc)
+JSON="$FRAMEWORK/coding-standards.json"
+EDITOR="$FRAMEWORK/editorconfig"
 
-if [[ ! -f "$MDC" ]]; then
-  echo "Missing: $MDC" >&2
-  exit 1
-fi
+for name in "${RULES[@]}"; do
+  if [[ ! -f "$FRAMEWORK/$name" ]]; then
+    echo "Missing: $FRAMEWORK/$name" >&2
+    exit 1
+  fi
+done
 
-install_into() {
-  local target="$1"
-  mkdir -p "$target/.cursor/rules"
-  cp "$MDC" "$target/.cursor/rules/clean-code-framework.mdc"
-  cp "$JSON" "$target/.cursor/coding-standards.json"
-  echo "Installed into project:"
-  echo "  $target/.cursor/rules/clean-code-framework.mdc"
-  echo "  $target/.cursor/coding-standards.json"
-  echo "Restart Cursor / start a new chat."
+install_rules() {
+  local rules_dir="$1"
+  mkdir -p "$rules_dir"
+  for name in "${RULES[@]}"; do
+    cp "$FRAMEWORK/$name" "$rules_dir/$name"
+    echo "  $rules_dir/$name"
+  done
 }
 
 if [[ "${1:-}" == "--global" ]]; then
-  RULES="${HOME}/.cursor/rules"
-  mkdir -p "$RULES"
-  cp "$MDC" "$RULES/clean-code-framework.mdc"
-  echo "Installed globally: $RULES/clean-code-framework.mdc"
+  RULES_DIR="${HOME}/.cursor/rules"
+  echo "Installed globally:"
+  install_rules "$RULES_DIR"
   echo "Restart Cursor / start a new chat."
   exit 0
 fi
 
 TARGET="${1:-.}"
 TARGET="$(cd "$TARGET" && pwd)"
-install_into "$TARGET"
+echo "Installed into project:"
+install_rules "$TARGET/.cursor/rules"
+if [[ -f "$JSON" ]]; then
+  cp "$JSON" "$TARGET/.cursor/coding-standards.json"
+  echo "  $TARGET/.cursor/coding-standards.json"
+fi
+if [[ ! -f "$TARGET/.editorconfig" ]]; then
+  cp "$EDITOR" "$TARGET/.editorconfig"
+  echo "  $TARGET/.editorconfig"
+fi
+echo "Restart Cursor / start a new chat."
+echo "Commit .cursor/rules/ and .editorconfig so the team uses the same rules."

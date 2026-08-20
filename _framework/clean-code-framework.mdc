@@ -15,6 +15,7 @@ Operating instructions for writing and changing code. Severity: **MUST** = hard 
 
 ## 2. Naming & readability (MUST)
 - Intention-revealing, pronounceable, searchable names from the domain vocabulary (Ubiquitous Language). Classes = nouns, methods = verbs. Rename when names stop fitting.
+- Identifier spelling, comments, and short text: follow `schreibweise.mdc` (MUST). One name, one spelling; no mixed styles.
 - Express intent in code, not comments. Delete dead/commented-out code. Keep only legal, intent, warning, TODO, and API-doc comments.
 
 ## 3. Functions & simplicity

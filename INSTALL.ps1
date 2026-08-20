@@ -16,18 +16,34 @@ param(
 
 $ErrorActionPreference = "Stop"
 $Root = Split-Path -Parent $MyInvocation.MyCommand.Path
-$Mdc = Join-Path $Root "_framework\clean-code-framework.mdc"
-$Json = Join-Path $Root "_framework\coding-standards.json"
+$Framework = Join-Path $Root "_framework"
+$Rules = @(
+    "clean-code-framework.mdc",
+    "schreibweise.mdc"
+)
+$Json = Join-Path $Framework "coding-standards.json"
+$Editor = Join-Path $Framework "editorconfig"
 
-if (-not (Test-Path $Mdc)) {
-    throw "Missing file: $Mdc"
+foreach ($name in $Rules) {
+    $pfad = Join-Path $Framework $name
+    if (-not (Test-Path $pfad)) {
+        throw "Missing file: $pfad"
+    }
+}
+
+function Install-Rules {
+    param([string]$RulesDir)
+    New-Item -ItemType Directory -Force -Path $RulesDir | Out-Null
+    foreach ($name in $Rules) {
+        Copy-Item (Join-Path $Framework $name) (Join-Path $RulesDir $name) -Force
+        Write-Host "  $RulesDir\$name"
+    }
 }
 
 if ($Global) {
     $rulesDir = Join-Path $env:USERPROFILE ".cursor\rules"
-    New-Item -ItemType Directory -Force -Path $rulesDir | Out-Null
-    Copy-Item $Mdc (Join-Path $rulesDir "clean-code-framework.mdc") -Force
-    Write-Host "Installed globally: $rulesDir\clean-code-framework.mdc"
+    Write-Host "Installed globally:"
+    Install-Rules $rulesDir
     Write-Host "Restart Cursor / start a new chat."
     exit 0
 }
@@ -39,10 +55,16 @@ if (-not $TargetProject) {
 $TargetProject = (Resolve-Path $TargetProject).Path
 $projRules = Join-Path $TargetProject ".cursor\rules"
 $projCursor = Join-Path $TargetProject ".cursor"
-New-Item -ItemType Directory -Force -Path $projRules | Out-Null
-Copy-Item $Mdc (Join-Path $projRules "clean-code-framework.mdc") -Force
-Copy-Item $Json (Join-Path $projCursor "coding-standards.json") -Force
 Write-Host "Installed into project:"
-Write-Host "  $projRules\clean-code-framework.mdc"
-Write-Host "  $projCursor\coding-standards.json"
+Install-Rules $projRules
+if (Test-Path $Json) {
+    Copy-Item $Json (Join-Path $projCursor "coding-standards.json") -Force
+    Write-Host "  $projCursor\coding-standards.json"
+}
+$editorZiel = Join-Path $TargetProject ".editorconfig"
+if (-not (Test-Path $editorZiel)) {
+    Copy-Item $Editor $editorZiel
+    Write-Host "  $editorZiel"
+}
 Write-Host "Restart Cursor / start a new chat."
+Write-Host "Commit .cursor/rules/ and .editorconfig so the team uses the same rules."

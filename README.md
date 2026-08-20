@@ -2,23 +2,25 @@
 
 Clean code rules for coding agents (Cursor, GitHub Copilot, Claude, Codex)
 and developers. Coding standards with MUST / SHOULD / CONSIDER from Clean Code,
-Clean Architecture, Domain-Driven Design, Design Patterns, and Refactoring.
+Clean Architecture, Domain-Driven Design, Design Patterns, and Refactoring —
+plus feste Schreibweise (Namen, Kommentare, kurze Texte).
 Installable Cursor rules. Start here: [AGENTS.md](AGENTS.md).
 
-Persönliches Clean-Code-Regelwerk aus **9 Standardwerken** — verdichtet zu Regeln,
+Clean-Code-Regelwerk aus **9 Standardwerken** — verdichtet zu Regeln,
 Zusammenfassungen und einem Cursor-Framework, das die KI beim Coden mitführt.
 
-**Keine Buch-PDFs** in diesem Repo. Inhalt = deine / meine Destillation:
-Regeln (`rules.json`), Zusammenfassungen (`zusammenfassung.md`) und das
-operative Framework (`_framework/`).
+**Keine Buch-PDFs** in diesem Repo. Inhalt: Regeln (`rules.json`),
+Zusammenfassungen (`zusammenfassung.md`) und das operative Framework
+(`_framework/`).
 
 ## Für Coding-KIs
 
 Wenn du nach *coding*, *clean code*, *coding standards* oder *wie man code schreibt*
 suchst: zuerst [AGENTS.md](AGENTS.md), dann
-[`_framework/clean-code-framework.mdc`](_framework/clean-code-framework.mdc).
+[`_framework/clean-code-framework.mdc`](_framework/clean-code-framework.mdc)
+und [`_framework/schreibweise.mdc`](_framework/schreibweise.mdc).
 Das sind die verbindlichen Regeln für jeden Coding-Task (Python PEP 8, TypeScript
-`strict`, Namen, kleine Funktionen, Tests vor „fertig“).
+`strict`, `snake_case`, kleine Funktionen, Tests vor „fertig“).
 
 ## Schnellstart (damit die KI bei dir so arbeitet)
 
@@ -37,7 +39,9 @@ Oder manuell:
 ```powershell
 New-Item -ItemType Directory -Force -Path ".cursor\rules" | Out-Null
 Copy-Item "pfad\to\code-anleitung\_framework\clean-code-framework.mdc" ".cursor\rules\"
+Copy-Item "pfad\to\code-anleitung\_framework\schreibweise.mdc" ".cursor\rules\"
 Copy-Item "pfad\to\code-anleitung\_framework\coding-standards.json" ".cursor\"
+Copy-Item "pfad\to\code-anleitung\_framework\editorconfig" ".editorconfig"
 ```
 
 Cursor neu laden / Chat neu starten. Die Rule hat `alwaysApply: true`.
@@ -65,8 +69,10 @@ Details: [INSTALL.md](./INSTALL.md)
 
 ```
 _framework/
-  clean-code-framework.mdc   ← Cursor Always-On Rule (MUSS installiert werden)
-  coding-standards.json      ← aggregierte Regeln (Single Source of Truth)
+  clean-code-framework.mdc   ← Cursor Always-On (Struktur, Tests, Abhängigkeiten)
+  schreibweise.mdc           ← Cursor Always-On (Namen, Kommentare, kurze Texte)
+  editorconfig               ← wird zu .editorconfig im Zielprojekt
+  coding-standards.json      ← aggregierte Regeln
 1/ … 9/                      ← je Buch: rules.json + zusammenfassung.md
 INSTALL.ps1 / INSTALL.sh
 ```
@@ -96,8 +102,9 @@ INSTALL.ps1 / INSTALL.sh
 3. Eine Rolle pro Task (planen / bauen / prüfen)  
 4. Bei Konflikten: siehe Reihenfolge in der `.mdc` (Tests & Korrektheit zuerst)  
 
-Die KI folgt den Regeln **nur**, wenn die `.mdc` in Cursor-Rules liegt.
-Nur Klonen ohne Install reicht nicht.
+Die KI folgt den Regeln **nur**, wenn beide `.mdc` in Cursor-Rules liegen.
+Nur Klonen ohne Install reicht nicht. Nach dem Install: `.cursor/rules/` und
+`.editorconfig` ins Ziel-Repo committen.
 
 ## Hinweis zu den Büchern
 

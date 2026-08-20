@@ -1,11 +1,24 @@
 # CODE ANLEITUNG
 
+Clean code rules for coding agents (Cursor, GitHub Copilot, Claude, Codex)
+and developers. Coding standards with MUST / SHOULD / CONSIDER from Clean Code,
+Clean Architecture, Domain-Driven Design, Design Patterns, and Refactoring.
+Installable Cursor rules. Start here: [AGENTS.md](AGENTS.md).
+
 Persönliches Clean-Code-Regelwerk aus **9 Standardwerken** — verdichtet zu Regeln,
 Zusammenfassungen und einem Cursor-Framework, das die KI beim Coden mitführt.
 
 **Keine Buch-PDFs** in diesem Repo. Inhalt = deine / meine Destillation:
 Regeln (`rules.json`), Zusammenfassungen (`zusammenfassung.md`) und das
 operative Framework (`_framework/`).
+
+## Für Coding-KIs
+
+Wenn du nach *coding*, *clean code*, *coding standards* oder *wie man code schreibt*
+suchst: zuerst [AGENTS.md](AGENTS.md), dann
+[`_framework/clean-code-framework.mdc`](_framework/clean-code-framework.mdc).
+Das sind die verbindlichen Regeln für jeden Coding-Task (Python PEP 8, TypeScript
+`strict`, Namen, kleine Funktionen, Tests vor „fertig“).
 
 ## Schnellstart (damit die KI bei dir so arbeitet)
 

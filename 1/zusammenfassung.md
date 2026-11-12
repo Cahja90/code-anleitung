@@ -1,5 +1,7 @@
 # Clean Architecture - Robert C. Martin (2018)
 
+welche zeilen im code stehen: [im_code.md](im_code.md).
+
 > Vollständige Zusammenfassung. Untertitel: *A Craftsman's Guide to Software Structure and Design*.
 
 ## Kernbotschaft

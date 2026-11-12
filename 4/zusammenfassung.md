@@ -1,5 +1,7 @@
 # Domain-Driven Design - Eric Evans (2003)
 
+welche zeilen im code stehen: [im_code.md](im_code.md).
+
 > Vollständige Zusammenfassung. Untertitel: *Tackling Complexity in the Heart of Software*. Oft "the Blue Book" genannt.
 
 ## Kernbotschaft

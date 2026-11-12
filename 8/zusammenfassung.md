@@ -1,5 +1,7 @@
 # The Mythical Man-Month - Frederick P. Brooks Jr. (1975 / Anniversary Ed. 1995)
 
+welche zeilen im code stehen: [im_code.md](im_code.md).
+
 > Vollständige Zusammenfassung. Untertitel: *Essays on Software Engineering*. Der wohl einflussreichste Essayband über das Management von Softwareprojekten.
 
 ## Kernbotschaft

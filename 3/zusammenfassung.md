@@ -1,5 +1,7 @@
 # Design Patterns - Gang of Four (1994)
 
+welche zeilen im code stehen: [im_code.md](im_code.md).
+
 > Vollständige Zusammenfassung. Autoren: Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides ("Gang of Four", GoF). Untertitel: *Elements of Reusable Object-Oriented Software*.
 >
 > Hinweis: Diese PDF ist ein gescanntes/bild-basiertes Dokument und ließ sich nicht als Text extrahieren. Diese Zusammenfassung basiert auf dem etablierten Inhalt des Werks.

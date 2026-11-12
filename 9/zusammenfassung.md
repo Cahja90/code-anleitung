@@ -1,5 +1,7 @@
 # The Pragmatic Programmer - David Thomas & Andrew Hunt (20th Anniversary Edition, 2019)
 
+welche zeilen im code stehen: [im_code.md](im_code.md).
+
 > Vollständige Zusammenfassung. Untertitel: *Your Journey to Mastery*. Sammlung von ~100 Tipps für pragmatische, verantwortungsvolle Softwareentwicklung.
 
 ## Kernbotschaft

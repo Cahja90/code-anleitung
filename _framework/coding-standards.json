@@ -1,8 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Clean Code Framework - Aggregated Coding Standards",
-  "description": "Single source of truth aggregated and de-duplicated from 9 canonical software engineering books. Operating language is English. Principles are actionable directives for the coding agent, grouped by theme. Each rule lists the books that support it.",
-  "version": "1.0.0",
+  "description": "Archiv der Auszuege. Alltag ist regeln/satz.py. Diese Datei bleibt das lange Nachlesen, nicht die Tagesregel.",
+  "version": "1.1.0",
+  "operativ": "regeln/satz.py",
   "language": "en",
   "severityLevels": {
     "must": "Hard rule. Do not violate without explicit user approval.",

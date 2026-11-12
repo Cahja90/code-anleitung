@@ -1,5 +1,7 @@
 # Fundamentals of Software Architecture - Mark Richards & Neal Ford (2020)
 
+welche zeilen im code stehen: [im_code.md](im_code.md).
+
 > Vollständige Zusammenfassung. Untertitel: *An Engineering Approach*.
 
 ## Kernbotschaft

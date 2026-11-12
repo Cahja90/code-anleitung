@@ -1,5 +1,7 @@
 # Clean Code - Robert C. Martin (2008)
 
+welche zeilen im code stehen: [im_code.md](im_code.md).
+
 > Vollständige Zusammenfassung. Untertitel: *A Handbook of Agile Software Craftsmanship*.
 
 ## Kernbotschaft

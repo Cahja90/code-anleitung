@@ -1,5 +1,7 @@
 # Refactoring: Improving the Design of Existing Code - Martin Fowler (2000/2018)
 
+welche zeilen im code stehen: [im_code.md](im_code.md).
+
 > Vollständige Zusammenfassung. Mit Kent Beck u.a. Diese Ausgabe ist die Java-basierte Erstauflage; die Prinzipien gelten unverändert.
 
 ## Kernbotschaft

@@ -1,5 +1,7 @@
 # The Design of Design - Frederick P. Brooks Jr. (2010)
 
+welche zeilen im code stehen: [im_code.md](im_code.md).
+
 > Vollständige Zusammenfassung. Untertitel: *Essays from a Computer Scientist*. Vom Autor des "Mythical Man-Month".
 
 ## Kernbotschaft

@@ -1,48 +1,29 @@
-# Agent instructions
+# für die ki
 
-This repository is a **coding standard pack** for coding agents and developers.
+dieses repo ist die kurze code-anleitung.
 
-Use it when the task is **coding**, code review, refactoring, naming, project
-structure, or “how should this be written”.
+## zuerst
 
-## Read first
+1. `regeln/satz.py` — die zeilen, die gelten
+2. `_framework/schreibweise.mdc` — namen und kommentare
+3. `_framework/clean-code-framework.mdc` — dieselbe kurze fassung für cursor
+4. `1/im_code.md` bis `9/im_code.md` — was aus jedem buch im code steht
 
-1. `_framework/clean-code-framework.mdc` — structure, tests, dependencies (MUST / SHOULD / CONSIDER)
-2. `_framework/schreibweise.mdc` — names, comments, short text (MUST)
-3. `_framework/coding-standards.json` — full rule set
-4. Folders `1`–`9` — book-level why, only if needed
+`zusammenfassung.md` und `_framework/coding-standards.json` sind nachlesen.
+nicht jede zeile daraus wird code.
 
-## Apply in a target project
-
-Clone, then install into the project that should follow the rules:
+## prüfen
 
 ```powershell
-.\INSTALL.ps1 -TargetProject <path-to-project>
+python -m unittest
 ```
 
-```bash
-./INSTALL.sh /path/to/project
-```
+## hart
 
-That copies:
-
-- `.cursor/rules/clean-code-framework.mdc`
-- `.cursor/rules/schreibweise.mdc`
-- `.editorconfig` (only if missing)
-
-Commit those files in the target repo. Restart Cursor / start a new chat.
-
-Without Cursor: copy the two `.mdc` files and `editorconfig` the same way and
-follow the tables by hand.
-
-## Hard rules (short)
-
-- New identifiers: `snake_case` functions/vars, PascalCase types, ALL_CAPS constants, lowercase files
-- One name, one spelling. Copy existing names exactly. Do not rename working code for style
-- Comments (when needed): lowercase, no space after `#` / `//` — `#lädt die daten`
-- Markdown headings: space after `#` (`# titel`)
-- Short everyday text in comments, commits, README — no hub/layer/center jargon
-- Small functions; no silent `except:`; domain names
-- Conflict order: correctness & tests > conceptual integrity > changeability > simplicity > local taste
-
-Do **not** add book PDFs. Do **not** invent a second style next to this pack.
+- neue namen: `klein_mit_unterstrich`, klasse gross, konstante `GROSS`, datei klein
+- laufenden code nicht umbenennen
+- kommentar klein, kein leerzeichen nach `#`
+- in markdown nach `#` ein leerzeichen
+- rechnung ohne datenbank, web, framework
+- fehler nicht schlucken
+- keine buch-pdfs, keine klarnamen, keine keys

@@ -1,118 +1,55 @@
-# CODE ANLEITUNG
+# code anleitung
 
-Clean code rules for coding agents (Cursor, GitHub Copilot, Claude, Codex)
-and developers. Coding standards with MUST / SHOULD / CONSIDER from Clean Code,
-Clean Architecture, Domain-Driven Design, Design Patterns, and Refactoring —
-plus feste Schreibweise (Namen, Kommentare, kurze Texte).
-Installable Cursor rules. Start here: [AGENTS.md](AGENTS.md).
+kurze regeln zum coden. aus neun büchern nur die zeilen, die im code etwas ändern.
+die bücher selbst liegen nicht hier.
 
-Clean-Code-Regelwerk aus **9 Standardwerken** — verdichtet zu Regeln,
-Zusammenfassungen und einem Cursor-Framework, das die KI beim Coden mitführt.
+## problem
 
-**Keine Buch-PDFs** in diesem Repo. Inhalt: Regeln (`rules.json`),
-Zusammenfassungen (`zusammenfassung.md`) und das operative Framework
-(`_framework/`).
+ein langes regelwerk wird nicht benutzt. hier steht nur, was `regeln/satz.py` festhält und `python -m unittest` prüft.
 
-## Für Coding-KIs
+## ablauf
 
-Wenn du nach *coding*, *clean code*, *coding standards* oder *wie man code schreibt*
-suchst: zuerst [AGENTS.md](AGENTS.md), dann
-[`_framework/clean-code-framework.mdc`](_framework/clean-code-framework.mdc)
-und [`_framework/schreibweise.mdc`](_framework/schreibweise.mdc).
-Das sind die verbindlichen Regeln für jeden Coding-Task (Python PEP 8, TypeScript
-`strict`, `snake_case`, kleine Funktionen, Tests vor „fertig“).
+1. die neun bücher lesen
+2. nur die zeilen behalten, die eine codezeile ändern
+3. diese zeilen in `regeln/satz.py`
+4. das beispiel `regeln/rechnung.py` hält sich daran
+5. `python -m unittest` fängt namen, kommentare, geschluckte fehler, nackte zahlen, verbotene imports und import-kreise
 
-## Schnellstart (damit die KI bei dir so arbeitet)
+```mermaid
+flowchart LR
+  buecher[neun buecher] --> auswahl[nur zeilen die code aendern]
+  auswahl --> satz[regeln/satz.py]
+  satz --> pruefung[python -m unittest]
+```
 
-### Option A — ein Projekt (empfohlen zum Teilen im Team)
-
-Im **Projekt-Root** (PowerShell):
+## start
 
 ```powershell
-git clone https://github.com/Cahja90/code-anleitung.git
-cd dein-projekt
-..\code-anleitung\INSTALL.ps1 -TargetProject .
+python -m unittest
+python -m regeln.pruefen
 ```
 
-Oder manuell:
+grün heisst: der code in diesem repo hält die regeln.
+
+cursor in einem anderen projekt:
 
 ```powershell
-New-Item -ItemType Directory -Force -Path ".cursor\rules" | Out-Null
-Copy-Item "pfad\to\code-anleitung\_framework\clean-code-framework.mdc" ".cursor\rules\"
-Copy-Item "pfad\to\code-anleitung\_framework\schreibweise.mdc" ".cursor\rules\"
-Copy-Item "pfad\to\code-anleitung\_framework\coding-standards.json" ".cursor\"
-Copy-Item "pfad\to\code-anleitung\_framework\editorconfig" ".editorconfig"
+.\INSTALL.ps1 -TargetProject "D:\Pfad\dein-projekt"
 ```
 
-Cursor neu laden / Chat neu starten. Die Rule hat `alwaysApply: true`.
+linux und macos: `./INSTALL.sh /pfad/dein-projekt`.
+details: [INSTALL.md](INSTALL.md).
 
-### Option B — global für alle Cursor-Projekte
+## was man sieht
 
-```powershell
-.\INSTALL.ps1 -Global
-```
+öffentlich: die kurzen regeln, die prüfung, das beispiel, die zusammenfassungen.
+privat: die buch-pdfs. die stehen nicht im repo und nicht unter dieser lizenz.
 
-Kopiert die `.mdc` nach `%USERPROFILE%\.cursor\rules\`.
+pro buch die zeilen, die im code sind: `1/im_code.md` bis `9/im_code.md`.
+die lange zusammenfassung daneben bleibt zum nachlesen.
 
-### Linux / macOS
+## lizenz
 
-```bash
-chmod +x INSTALL.sh
-./INSTALL.sh                 # aktuelles Verzeichnis = Projekt
-./INSTALL.sh --global        # globale Cursor-Rules
-./INSTALL.sh /pfad/zum/projekt
-```
-
-Details: [INSTALL.md](./INSTALL.md)
-
-## Was drin ist
-
-```
-_framework/
-  clean-code-framework.mdc   ← Cursor Always-On (Struktur, Tests, Abhängigkeiten)
-  schreibweise.mdc           ← Cursor Always-On (Namen, Kommentare, kurze Texte)
-  editorconfig               ← wird zu .editorconfig im Zielprojekt
-  coding-standards.json      ← aggregierte Regeln
-1/ … 9/                      ← je Buch: rules.json + zusammenfassung.md
-INSTALL.ps1 / INSTALL.sh
-```
-
-| Ordner | Buch |
-|--------|------|
-| 1 | Clean Architecture — Robert C. Martin |
-| 2 | Clean Code — Robert C. Martin |
-| 3 | Design Patterns (GoF) |
-| 4 | Domain-Driven Design — Eric Evans |
-| 5 | The Design of Design — Fred Brooks |
-| 6 | Fundamentals of Software Architecture — Richards & Ford |
-| 7 | Refactoring — Martin Fowler |
-| 8 | The Mythical Man-Month — Fred Brooks |
-| 9 | The Pragmatic Programmer — Hunt & Thomas |
-
-## Schweregrade
-
-- **MUST** — harte Regel, nur mit ausdrücklicher Freigabe abweichen  
-- **SHOULD** — starke Voreinstellung, Abweichung nur mit Begründung  
-- **CONSIDER** — Heuristik, je nach Kontext  
-
-## So nutzen (Alltag)
-
-1. Framework installieren (oben)  
-2. Im Projekt: Rohbau zuerst (Ziel, Ordner, Gates)  
-3. Eine Rolle pro Task (planen / bauen / prüfen)  
-4. Bei Konflikten: siehe Reihenfolge in der `.mdc` (Tests & Korrektheit zuerst)  
-
-Die KI folgt den Regeln **nur**, wenn beide `.mdc` in Cursor-Rules liegen.
-Nur Klonen ohne Install reicht nicht. Nach dem Install: `.cursor/rules/` und
-`.editorconfig` ins Ziel-Repo committen.
-
-## Hinweis zu den Büchern
-
-Die Original-Bücher bleiben urheberrechtlich geschützt. Dieses Repo enthält
-**keine** Verlags-PDFs, sondern eigene Zusammenfassungen und Handlungsregeln.
-Die Bücher bitte legal erwerben, wenn du die Primärquellen brauchst.
-
-## License
-
-MIT für **dieses** Regelwerk und die Dateien in diesem Repo — siehe [LICENSE](./LICENSE).  
-Buchtitel und Autoren bleiben Rechte der jeweiligen Rechteinhaber.
+MIT. forken, ändern und ein review sind erlaubt. der text steht in [LICENSE](LICENSE).
+wie man mitmacht: [CONTRIBUTING.md](CONTRIBUTING.md).
+fremde werke: [NOTICE.md](NOTICE.md).

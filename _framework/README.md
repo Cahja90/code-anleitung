@@ -1,20 +1,21 @@
 # Clean Code Framework
 
-Destilliert aus **9 Standardwerken** — steuert den KI-Agenten beim Coden.
+Destilliert aus **9 Standardwerken**. Alltag ist [`regeln/satz.py`](../regeln/satz.py), nicht die lange Liste.
 
 ## Dateien
 
 | Datei | Inhalt |
 |-------|--------|
-| `clean-code-framework.mdc` | Always-On Cursor-Rule (Struktur, Tests) |
-| `schreibweise.mdc` | Always-On Cursor-Rule (Namen, Kommentare) |
-| `editorconfig` | Vorlage für `.editorconfig` im Zielprojekt |
-| `coding-standards.json` | Aggregierte Regeln (Themen + Schweregrad + Buch-Belege) |
+| `clean-code-framework.mdc` | kurze fassung für cursor, dieselbe wie `regeln/satz.py` |
+| `schreibweise.mdc` | namen, kommentare, kurze texte |
+| `editorconfig` | vorlage für `.editorconfig` im zielprojekt |
+| `coding-standards.json` | langes nachlesen, nicht die tagesregel |
 
 Pro Buch zusätzlich im Repo-Root unter `1`–`9`:
 
-- `zusammenfassung.md` — ausführliche Zusammenfassung  
-- `rules.json` — Regeln dieses Buches  
+- `im_code.md` — die zeilen, die im code stehen
+- `zusammenfassung.md` — ausführliche Zusammenfassung
+- `rules.json` — Regeln dieses Buches
 
 ## Installation
 

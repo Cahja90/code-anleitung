@@ -3,6 +3,8 @@
 Nach dem Klonen die Regeln **ins Zielprojekt kopieren**. Nur Klonen reicht nicht:
 die KI liest die `.mdc` erst, wenn sie in `.cursor/rules/` liegt.
 
+Ob der Code in diesem Repo die Regeln hält: `python -m unittest`.
+
 ## Voraussetzungen
 
 - [Cursor](https://cursor.com) (für die automatische Anwendung)

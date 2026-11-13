@@ -12,6 +12,11 @@ dieses repo ist die kurze code-anleitung.
 `zusammenfassung.md` und `_framework/coding-standards.json` sind nachlesen.
 nicht jede zeile daraus wird code.
 
+## arbeit
+
+aufgaben in den normalen projekten erledigen subagenten, die von hier geschickt werden.
+die beobachtung bleibt hier. nicht vom anderen projekt aus den lauf führen.
+
 ## prüfen
 
 ```powershell

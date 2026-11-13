@@ -31,6 +31,18 @@ python -m regeln.pruefen
 
 grün heisst: der code in diesem repo hält die regeln.
 
+## von hier
+
+subagenten gehen von diesem repo in die normalen projekte und erledigen dort die aufgabe.
+beobachtet wird von hier. der lauf und das ergebnis bleiben hier sichtbar.
+
+```mermaid
+flowchart LR
+  hier[dieses repo] --> sub[subagenten]
+  sub --> projekte[normale projekte]
+  projekte --> hier
+```
+
 cursor in einem anderen projekt:
 
 ```powershell

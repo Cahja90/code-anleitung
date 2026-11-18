@@ -1,3 +1,5 @@
+[![pruefen](https://github.com/Cahja90/code-anleitung/actions/workflows/pruefen.yml/badge.svg)](https://github.com/Cahja90/code-anleitung/actions/workflows/pruefen.yml)
+
 # code anleitung
 
 kurze regeln zum coden. aus neun büchern nur die zeilen, die im code etwas ändern.
